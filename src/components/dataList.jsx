@@ -11,7 +11,7 @@ import {
   Paper,
 } from "@mui/material";
 
-const API_URL = "https://reto-api.onrender.com/api/valores";
+const API_URL = "https://reto-api.onrender.com";
 
 function DataList() {
   const [data, setData] = useState([]);
@@ -22,8 +22,9 @@ function DataList() {
     fetch(API_URL)
       .then((response) => response.json())
       .then((json) => {
-        setData(json);
-        setFilteredData(json);
+        console.log("Datos obtenidos:", json);
+        setData(json.data);
+        setFilteredData(json.data);
       })
       .catch((error) => console.error("Error al obtener datos:", error));
   }, []);
